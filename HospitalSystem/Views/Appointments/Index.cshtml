@@ -1,0 +1,27 @@
+﻿@model IEnumerable<HospitalSystem.Models.Appointment>
+
+<h2 class="text-center text-primary mb-4">Booked Appointments</h2>
+
+<table class="table table-hover table-bordered shadow-sm bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appt in Model)
+        {
+            <tr>
+                <td>@appt.PatientName</td>
+                <td>Dr. @appt.Doctor?.Name</td>
+                <td>@appt.Doctor?.Specialization</td>
+                <td>@appt.Date.ToShortDateString()</td>
+                <td>@appt.Time.ToString(@"hh\:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
